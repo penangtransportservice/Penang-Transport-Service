@@ -1479,12 +1479,12 @@
     <a href="./" class="brand"><img class="mark" src="logo.webp" width="36" height="36" decoding="async" alt="Penang Transportation Service"><span>Penang Transportation Service</span></a>
     <button class="burger" id="bg" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
     <nav id="nv" aria-label="Main Navigation">
-      <a class="l" href="/about" data-ms="Tentang Kami">About</a>
-      <a class="l" href="/services" data-ms="Perkhidmatan">Services</a>
-      <a class="l" href="/routes" data-ms="Laluan">Routes</a>
-      <a class="l" href="/fleet" data-ms="Kenderaan">Fleet</a>
-      <a class="l" href="/review" data-ms="Ulasan">Review</a>
-      <a class="l" href="/contact" data-ms="Hubungi">Contact</a>
+      <a class="l" href="#about" data-ms="Tentang Kami">About</a>
+      <a class="l" href="#services" data-ms="Perkhidmatan">Services</a>
+      <a class="l" href="#routes" data-ms="Laluan">Routes</a>
+      <a class="l" href="#fleet" data-ms="Kenderaan">Fleet</a>
+      <a class="l" href="#review" data-ms="Ulasan">Review</a>
+      <a class="l" href="#contact" data-ms="Hubungi">Contact</a>
       <button class="lang" id="lg" aria-label="Language">BM</button>
     </nav>
   </header>
@@ -1726,12 +1726,12 @@
       </div>
       <div class="fl">
         <h4 data-ms="Pautan">Links</h4>
-        <a href="/about" data-ms="Tentang Kami">About</a>
-        <a href="/services" data-ms="Perkhidmatan">Services</a>
-        <a href="/routes" data-ms="Laluan">Routes</a>
-        <a href="/fleet" data-ms="Kenderaan">Fleet</a>
-        <a href="/review" data-ms="Ulasan">Review</a>
-        <a href="/contact" data-ms="Hubungi">Contact</a>
+        <a href="#about" data-ms="Tentang Kami">About</a>
+        <a href="#services" data-ms="Perkhidmatan">Services</a>
+        <a href="#routes" data-ms="Laluan">Routes</a>
+        <a href="#fleet" data-ms="Kenderaan">Fleet</a>
+        <a href="#review" data-ms="Ulasan">Review</a>
+        <a href="#contact" data-ms="Hubungi">Contact</a>
       </div>
       <div>
         <h4 data-ms="Hubungi">Contact</h4>
@@ -1740,7 +1740,7 @@
         <div class="ct"><em data-ms="E-mel">Email</em><a href="mailto:dianahehsan@gmail.com">dianahehsan@gmail.com</a></div>
         <div class="ct"><em data-ms="No. SSM">SSM No.</em><span>201603049013 (PG0386063D)</span></div>
       </div>
-      <small>&copy; 2026 Penang Transportation Service<br><a href="/privacy" data-ms="Dasar Privasi">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="/terms" data-ms="Terma &amp; Syarat">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp; <a href="/refund" data-ms="Dasar Bayaran Balik">Refund Policy</a></small>
+      <small>&copy; 2026 Penang Transportation Service<br><a href="privacy.html" data-ms="Dasar Privasi">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="terms.html" data-ms="Terma &amp; Syarat">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp; <a href="refund.html" data-ms="Dasar Bayaran Balik">Refund Policy</a></small>
     </div>
   </footer>
 
@@ -1772,57 +1772,10 @@
         bg.setAttribute('aria-expanded', o);
       };
 
-      var routeMap = {
-        '/': 'home',
-        '/about': 'about',
-        '/services': 'services',
-        '/routes': 'routes',
-        '/fleet': 'fleet',
-        '/review': 'review',
-        '/contact': 'contact'
-      };
-
-      function navigateTo(path, push) {
-        var targetId = routeMap[path];
-        if (targetId) {
-          var el = document.getElementById(targetId);
-          if (el) {
-            el.scrollIntoView({ behavior: 'smooth' });
-            if (push && window.location.pathname !== path) {
-              window.history.pushState(null, '', path);
-            }
-          }
-        }
-      }
-
       document.addEventListener('click', function (e) {
         var a = e.target.closest('a');
-        if (a) {
-          var href = a.getAttribute('href');
-          if (href && routeMap[href]) {
-            e.preventDefault();
-            closeMenu();
-            navigateTo(href, true);
-          }
-        }
+        if (a && (a.getAttribute('href') || '').charAt(0) === '#') closeMenu();
       });
-
-      window.addEventListener('popstate', function () {
-        var p = window.location.pathname.replace(/\/$/, '') || '/';
-        navigateTo(p, false);
-      });
-
-      var savedSection = sessionStorage.getItem('scrollTarget');
-      if (savedSection && routeMap['/' + savedSection]) {
-        sessionStorage.removeItem('scrollTarget');
-        if (window.history && window.history.replaceState) {
-          var basePath = window.location.pathname.endsWith('/') ? window.location.pathname : window.location.pathname.replace(/\/[^\/]*$/, '/');
-          window.history.replaceState(null, '', basePath);
-        }
-        setTimeout(function () {
-          navigateTo('/' + savedSection, false);
-        }, 120);
-      }
 
       var rv = document.querySelectorAll('.rv');
       if ('IntersectionObserver' in window) {
