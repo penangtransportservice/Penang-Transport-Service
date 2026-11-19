@@ -695,15 +695,15 @@
 <body>
 
   <header id="hd">
-    <a href="/" class="brand"><img class="mark" src="logo.webp" width="36" height="36" decoding="async" alt="Penang Transportation Service"><span>Penang Transportation Service</span></a>
+    <a href="./" class="brand"><img class="mark" src="logo.webp" width="36" height="36" decoding="async" alt="Penang Transportation Service"><span>Penang Transportation Service</span></a>
     <button class="burger" id="bg" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
     <nav id="nv" aria-label="Main Navigation">
-      <a class="l" href="/about" data-ms="Tentang Kami">About</a>
-      <a class="l" href="/services" data-ms="Perkhidmatan">Services</a>
-      <a class="l" href="/routes" data-ms="Laluan">Routes</a>
-      <a class="l" href="/fleet" data-ms="Kenderaan">Fleet</a>
-      <a class="l" href="/review" data-ms="Ulasan">Review</a>
-      <a class="l" href="/contact" data-ms="Hubungi">Contact</a>
+      <a class="l" href="index.html#about" data-ms="Tentang Kami">About</a>
+      <a class="l" href="index.html#services" data-ms="Perkhidmatan">Services</a>
+      <a class="l" href="index.html#routes" data-ms="Laluan">Routes</a>
+      <a class="l" href="index.html#fleet" data-ms="Kenderaan">Fleet</a>
+      <a class="l" href="index.html#review" data-ms="Ulasan">Review</a>
+      <a class="l" href="index.html#contact" data-ms="Hubungi">Contact</a>
       <button class="lang" id="lg" aria-label="Language">BM</button>
     </nav>
   </header>
@@ -762,12 +762,12 @@
       </div>
       <div class="fl">
         <h4 data-ms="Pautan">Links</h4>
-        <a href="/about" data-ms="Tentang Kami">About</a>
-        <a href="/services" data-ms="Perkhidmatan">Services</a>
-        <a href="/routes" data-ms="Laluan">Routes</a>
-        <a href="/fleet" data-ms="Kenderaan">Fleet</a>
-        <a href="/review" data-ms="Ulasan">Review</a>
-        <a href="/contact" data-ms="Hubungi">Contact</a>
+        <a href="index.html#about" data-ms="Tentang Kami">About</a>
+        <a href="index.html#services" data-ms="Perkhidmatan">Services</a>
+        <a href="index.html#routes" data-ms="Laluan">Routes</a>
+        <a href="index.html#fleet" data-ms="Kenderaan">Fleet</a>
+        <a href="index.html#review" data-ms="Ulasan">Review</a>
+        <a href="index.html#contact" data-ms="Hubungi">Contact</a>
       </div>
       <div>
         <h4 data-ms="Hubungi">Contact</h4>
@@ -776,7 +776,7 @@
         <div class="ct"><em data-ms="E-mel">Email</em><a href="mailto:dianahehsan@gmail.com">dianahehsan@gmail.com</a></div>
         <div class="ct"><em data-ms="No. SSM">SSM No.</em><span>201603049013 (PG0386063D)</span></div>
       </div>
-      <small>&copy; 2026 Penang Transportation Service<br><a href="/privacy" data-ms="Dasar Privasi">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="/terms" data-ms="Terma &amp; Syarat">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp; <a href="/refund" data-ms="Dasar Bayaran Balik">Refund Policy</a></small>
+      <small>&copy; 2026 Penang Transportation Service<br><a href="privacy.html" data-ms="Dasar Privasi">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="terms.html" data-ms="Terma &amp; Syarat">Terms &amp; Conditions</a> &nbsp;&middot;&nbsp; <a href="refund.html" data-ms="Dasar Bayaran Balik">Refund Policy</a></small>
     </div>
   </footer>
 
@@ -807,28 +807,6 @@
         bg.classList.toggle('x', o);
         bg.setAttribute('aria-expanded', o);
       };
-
-      var routeMap = {
-        '/': 'home',
-        '/about': 'about',
-        '/services': 'services',
-        '/routes': 'routes',
-        '/fleet': 'fleet',
-        '/review': 'review',
-        '/contact': 'contact'
-      };
-
-      document.addEventListener('click', function (e) {
-        var a = e.target.closest('a');
-        if (a) {
-          var href = a.getAttribute('href');
-          if (href && routeMap[href]) {
-            e.preventDefault();
-            if (href !== '/') { try { sessionStorage.setItem('scrollTarget', href.slice(1)); } catch (err) {} }
-            window.location.href = '/';
-          }
-        }
-      });
 
       var lang = 'ms',
           els = document.querySelectorAll('[data-ms]'),
